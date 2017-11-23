@@ -20,6 +20,9 @@ import { PedidoVentaService } from '../shared/services/pedidoVenta.service';
 import { PedidoVentaDetalleService } from '../shared/services/pedidoVentaDetalle.service';
 import { RubroService } from '../shared/services/rubro.service';
 
+// 
+import { IonicStorageModule } from '@ionic/storage';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -30,7 +33,8 @@ import { RubroService } from '../shared/services/rubro.service';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -49,7 +53,7 @@ import { RubroService } from '../shared/services/rubro.service';
     DomicilioService,
     PedidoVentaService,
     PedidoVentaDetalleService,
-    RubroService
+    RubroService  
   ]
 })
 export class AppModule { }
