@@ -26,6 +26,6 @@ export class ArticuloService {
 
     getAllByRubro(rubro: Rubro): Observable<Articulo[]> {
         return this.articuloService.find({ where: { idRubro: rubro.idRubro } });
-    }    
+    }
 
 }
