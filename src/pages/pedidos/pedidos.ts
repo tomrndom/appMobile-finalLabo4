@@ -13,7 +13,7 @@ export class PedidosPage {
 
   public pedidosGuardados: boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private pedidosService: PedidoVentaService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
@@ -25,11 +25,11 @@ export class PedidosPage {
   }
 
   checkPedidos() {
-    if (this.pedidosService.pedidosEnMemoria.length > 0){
+    /*if (this.pedidosService.pedidosEnMemoria.length > 0){
       this.pedidosGuardados = true;
     } else {
       this.pedidosGuardados = false;
-    }
+    }*/
   }
 
 }

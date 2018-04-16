@@ -3,18 +3,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
+import { PedidosPage } from '../pages/pedidos/pedidos';
+import { NuevoPage } from '../pages/nuevo/nuevo';
+import { SincronizarPage } from '../pages/sincronizar/sincronizar';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { IonicStorageModule } from '@ionic/storage';
-import { PedidoVentaService } from '../shared/services';
-import { PedidosPage } from '../pages/pedidos/pedidos';
-import { NuevoPage } from '../pages/nuevo/nuevo';
-import { SincronizarPage } from '../pages/sincronizar/sincronizar';
+
+// Servicios
+import { PedidoVentaService, ClienteService, ArticuloService, DomicilioService, PedidoVentaDetalleService, RubroService } from '../shared/services/index';
 
 @NgModule({
   declarations: [
@@ -41,7 +40,12 @@ import { SincronizarPage } from '../pages/sincronizar/sincronizar';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    PedidoVentaService    
+    PedidoVentaService, 
+    ClienteService, 
+    ArticuloService, 
+    DomicilioService, 
+    PedidoVentaDetalleService, 
+    RubroService
   ]
 })
 export class AppModule {}
