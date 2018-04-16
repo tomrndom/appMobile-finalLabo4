@@ -15,12 +15,27 @@
 
 <ion-content padding>
 
-  Bienvenido!
+  <ion-title>Bienvenido!</ion-title>
 
-  Actualmente hay "x" pedidos para ser enviados.
+  <div *ngIf="pedidosEnMemoria">
+    <ion-label>Actualmente hay x pedidos para ser enviados.</ion-label>
 
-  > lista de pedidos en memoria
+    <ion-card>
+      <ion-card-header>
+        Pedidos
+      </ion-card-header>
+      
+    </ion-card>
+  </div>
 
-  <button>Consultar pedidos</button>
+  <div *ngIf="!pedidosEnMemoria">
+    <ion-label>Actualmente no hay pedidos cargados para ser enviados.</ion-label>
+  </div>
+
+  <ion-card>
+    <ion-card-header>
+      Explore Nearby
+    </ion-card-header>
+  </ion-card>
 
 </ion-content>

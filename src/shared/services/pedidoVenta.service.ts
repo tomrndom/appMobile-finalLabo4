@@ -8,12 +8,16 @@ import 'rxjs/add/operator/toPromise';
 import { BASE_URL, API_VERSION } from './lb.base.url'
 import { LoopBackConfig, LoopBackFilter, Pedidoventa, PedidoventaApi, Cliente, Domicilio } from './lbsdk/index'
 
+import { Storage } from '@ionic/storage';
+
 @Injectable()
 export class PedidoVentaService {
 
     public pedidoVentaActual: Pedidoventa;
 
-    constructor(private pedidoVentaService: PedidoventaApi) {
+    public pedidosEnMemoria: Array<Pedidoventa>;
+
+    constructor(private pedidoVentaService: PedidoventaApi, public storage: Storage) {
     }
 
     getAll(filtro: any = {}): Observable<Pedidoventa[]> {

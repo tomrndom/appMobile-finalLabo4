@@ -10,31 +10,38 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { IonicStorageModule } from '@ionic/storage';
+import { PedidoVentaService } from '../shared/services';
+import { PedidosPage } from '../pages/pedidos/pedidos';
+import { NuevoPage } from '../pages/nuevo/nuevo';
+import { SincronizarPage } from '../pages/sincronizar/sincronizar';
 
 @NgModule({
   declarations: [
-    MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage
+    MyApp,    
+    TabsPage,
+    PedidosPage,
+    NuevoPage,
+    SincronizarPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),    
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage
+    MyApp,    
+    TabsPage,
+    PedidosPage,
+    NuevoPage,
+    SincronizarPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    PedidoVentaService    
   ]
 })
 export class AppModule {}
