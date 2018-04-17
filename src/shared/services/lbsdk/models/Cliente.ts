@@ -6,8 +6,6 @@ export interface ClienteInterface {
   "razonsocial": string;
   "cuit": string;
   "saldo"?: number;
-  "idDomicilio": number;
-  "idDomicilionegocio": number;
 }
 
 export class Cliente implements ClienteInterface {
@@ -15,8 +13,6 @@ export class Cliente implements ClienteInterface {
   "razonsocial": string;
   "cuit": string;
   "saldo": number;
-  "idDomicilio": number;
-  "idDomicilionegocio": number;
   constructor(data?: ClienteInterface) {
     Object.assign(this, data);
   }
@@ -64,14 +60,6 @@ export class Cliente implements ClienteInterface {
         },
         "saldo": {
           name: 'saldo',
-          type: 'number'
-        },
-        "idDomicilio": {
-          name: 'idDomicilio',
-          type: 'number'
-        },
-        "idDomicilionegocio": {
-          name: 'idDomicilionegocio',
           type: 'number'
         },
       },

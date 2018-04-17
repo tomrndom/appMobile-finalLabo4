@@ -11,6 +11,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Device } from '@ionic-native/device'
 
 // Services
 import { ArticuloService } from '../shared/services/articulo.service';
@@ -47,13 +48,14 @@ import { IonicStorageModule } from '@ionic/storage';
   providers: [
     StatusBar,
     SplashScreen,
+    Device,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     ArticuloService,
     ClienteService,
     DomicilioService,
     PedidoVentaService,
     PedidoVentaDetalleService,
-    RubroService  
+    RubroService
   ]
 })
 export class AppModule { }

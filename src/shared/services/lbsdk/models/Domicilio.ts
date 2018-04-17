@@ -8,6 +8,8 @@ export interface DomicilioInterface {
   "localidad": string;
   "latitud"?: string;
   "longitud"?: string;
+  "tipoDomicilio"?: string;
+  "idCliente": number;
 }
 
 export class Domicilio implements DomicilioInterface {
@@ -17,6 +19,8 @@ export class Domicilio implements DomicilioInterface {
   "localidad": string;
   "latitud": string;
   "longitud": string;
+  "tipoDomicilio": string;
+  "idCliente": number;
   constructor(data?: DomicilioInterface) {
     Object.assign(this, data);
   }
@@ -73,6 +77,14 @@ export class Domicilio implements DomicilioInterface {
         "longitud": {
           name: 'longitud',
           type: 'string'
+        },
+        "tipoDomicilio": {
+          name: 'tipoDomicilio',
+          type: 'string'
+        },
+        "idCliente": {
+          name: 'idCliente',
+          type: 'number'
         },
       },
       relations: {

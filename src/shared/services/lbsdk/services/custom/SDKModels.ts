@@ -6,6 +6,8 @@ import { Domicilio } from '../../models/Domicilio';
 import { Pedidoventa } from '../../models/Pedidoventa';
 import { Rubro } from '../../models/Rubro';
 import { Pedidoventadetalle } from '../../models/Pedidoventadetalle';
+import { Auth } from '../../models/Auth';
+import { Devices } from '../../models/Devices';
 
 export interface Models { [name: string]: any }
 
@@ -19,6 +21,8 @@ export class SDKModels {
     Pedidoventa: Pedidoventa,
     Rubro: Rubro,
     Pedidoventadetalle: Pedidoventadetalle,
+    Auth: Auth,
+    Devices: Devices,
     
   };
 

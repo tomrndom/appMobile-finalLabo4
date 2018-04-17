@@ -51,6 +51,8 @@ import { DomicilioApi } from './services/custom/Domicilio';
 import { PedidoventaApi } from './services/custom/Pedidoventa';
 import { RubroApi } from './services/custom/Rubro';
 import { PedidoventadetalleApi } from './services/custom/Pedidoventadetalle';
+import { AuthApi } from './services/custom/Auth';
+import { DevicesApi } from './services/custom/Devices';
 /**
 * @module SDKBrowserModule
 * @description
@@ -86,6 +88,8 @@ export class SDKBrowserModule {
         PedidoventaApi,
         RubroApi,
         PedidoventadetalleApi,
+        AuthApi,
+        DevicesApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser }
       ]
