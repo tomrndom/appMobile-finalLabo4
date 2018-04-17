@@ -11,7 +11,7 @@ import { LoopBackConfig, LoopBackFilter, Pedidoventa, PedidoventaApi, Cliente, D
 @Injectable()
 export class PedidoVentaService {
 
-    public pedidoVentaActual: Pedidoventa;
+    public pedidoVentaActual: Pedidoventa;    
 
     constructor(private pedidoVentaService: PedidoventaApi) {
     }

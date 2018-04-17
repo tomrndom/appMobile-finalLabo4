@@ -10,7 +10,7 @@ import { TabsPage } from '../pages/tabs/tabs';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage: any = TabsPage;
+  rootPage:any = TabsPage;
 
   constructor(
     platform: Platform, 
@@ -20,7 +20,7 @@ export class MyApp {
   ) {
     platform.ready().then(() => {      
       statusBar.styleDefault();
-      splashScreen.hide();      
+      splashScreen.hide();
     });
     console.log("UUID: ", device.uuid);
     console.log("MODEL: ", device.model);

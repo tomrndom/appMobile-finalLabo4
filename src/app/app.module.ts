@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-// Pages
 import { PedidosPage } from '../pages/pedidos/pedidos';
 import { NuevoPage } from '../pages/nuevo/nuevo';
 import { SincronizarPage } from '../pages/sincronizar/sincronizar';
@@ -21,29 +20,29 @@ import { PedidoVentaService } from '../shared/services/pedidoVenta.service';
 import { PedidoVentaDetalleService } from '../shared/services/pedidoVentaDetalle.service';
 import { RubroService } from '../shared/services/rubro.service';
 
-// 
+// Storage Module
 import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
-    MyApp,
+    MyApp,    
+    TabsPage,
     PedidosPage,
     NuevoPage,
-    SincronizarPage,
-    TabsPage
+    SincronizarPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp),    
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
+    MyApp,    
+    TabsPage,
     PedidosPage,
     NuevoPage,
-    SincronizarPage,
-    TabsPage
+    SincronizarPage
   ],
   providers: [
     StatusBar,
@@ -58,4 +57,4 @@ import { IonicStorageModule } from '@ionic/storage';
     RubroService
   ]
 })
-export class AppModule { }
+export class AppModule {}
