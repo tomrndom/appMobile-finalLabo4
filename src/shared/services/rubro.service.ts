@@ -13,6 +13,8 @@ export class RubroService {
 
     public rubroActual: Rubro;
 
+    public listaRubros: Array<Rubro>;
+
     constructor(private rubroService: RubroApi) {
     }
 

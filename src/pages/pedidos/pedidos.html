@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>pedidos</ion-title>
+    <ion-title>App Mobile Pedidos</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,7 +15,7 @@
 
 <ion-content padding>
 
-  <ion-title>Bienvenido!</ion-title>
+  <ion-title text-center>Bienvenido!</ion-title>
 
   <div *ngIf="pedidosEnMemoria">
     <ion-label>Actualmente hay x pedidos para ser enviados.</ion-label>
@@ -29,13 +29,9 @@
   </div>
 
   <div *ngIf="!pedidosEnMemoria">
-    <ion-label>Actualmente no hay pedidos cargados para ser enviados.</ion-label>
-  </div>
-
-  <ion-card>
-    <ion-card-header>
-      Explore Nearby
-    </ion-card-header>
-  </ion-card>
+    <ion-label text-center>Actualmente no hay pedidos cargados 
+      <br>
+      para ser enviados.</ion-label>
+  </div>  
 
 </ion-content>

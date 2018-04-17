@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 
 import { AlertController } from 'ionic-angular';
-import { Network } from '@ionic-native/network';
+import { StorageService } from '../../shared/services/storage.service';
+import { Pedidoventa } from '../../shared/services/lbsdk';
+import { PedidoVentaService, PedidoVentaDetalleService } from '../../shared/services';
 
 @Component({
   selector: 'page-sincronizar',
@@ -12,49 +14,22 @@ export class SincronizarPage {
 
   private internetAccess: boolean;
 
+  private pedidos: Array<Pedidoventa>;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private alertCtrl: AlertController,
-    private network: Network,
-    public loadingCtrl: LoadingController
+    private alertCtrl: AlertController,    
+    public loadingCtrl: LoadingController,
+    private storage: StorageService,
+    private pedidoService: PedidoVentaService,
+    private detalleService: PedidoVentaDetalleService
   ) {
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SincronizarPage');
-  }
-
-  checkInternet() {
-
-    // loading 
-
-    let loading = this.loadingCtrl.create({
-      content: 'Revisando conexión...'
-    });
-
-    loading.present();
-
-
-    let connectSubscription = this.network.onConnect().subscribe(() => {
-      console.log('network connected!');
-      setTimeout(() => {
-        if (this.network.type === 'wifi' || 'ethernet' || '2g' || '3g' || '4g' || 'cellular') {
-          console.log('we got a wifi connection, woohoo!');
-          this.internetAccess = true;
-          loading.dismiss();
-          this.sincronizarCheck();
-        } else if (this.network.type === 'none' || 'unknown') {
-          this.internetAccess = false
-          loading.dismiss();
-        } else {
-          console.log('Error verificando red');
-          this.internetAccess = false;
-          loading.dismiss();
-        }
-      }, 4000);
-    });
   }
 
   sincronizarCheck() {
@@ -88,6 +63,19 @@ export class SincronizarPage {
     });
 
     loading.present();
+
+    this.storage.leerStorage();
+
+    this.storage.pedidosEnMemoria.map(pedido => {
+
+      this.pedidoService.postPedido(pedido).flatMap(pedido => {
+        console.log("pedido guardado", pedido);
+        let tempDetalle: any = this.storage.detallesEnMemoria.map(x => { x.idPedidoventa = pedido.idPedidoventa })
+        return this.detalleService.postDetalles(tempDetalle)
+      }).subscribe(detalles => {
+        console.log("detalles guardados", detalles);
+      })
+    })
 
 
   }

@@ -13,6 +13,8 @@ export class ArticuloService {
 
     public articuloActual: Articulo;
 
+    public listaArticulos: Array<Articulo>
+
     constructor(private articuloService: ArticuloApi) {
     }
 

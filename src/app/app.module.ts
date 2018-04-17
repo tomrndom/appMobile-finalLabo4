@@ -19,9 +19,14 @@ import { DomicilioService } from '../shared/services/domicilio.service';
 import { PedidoVentaService } from '../shared/services/pedidoVenta.service';
 import { PedidoVentaDetalleService } from '../shared/services/pedidoVentaDetalle.service';
 import { RubroService } from '../shared/services/rubro.service';
+import { CacheServicio } from '../shared/services/cache.service';
 
 // Storage Module
 import { IonicStorageModule } from '@ionic/storage';
+import { Network } from '@ionic-native/network';
+import { CacheModule } from 'ionic-cache';
+import { HttpClientModule } from '@angular/common/http';
+import { PedidoventaApi, PedidoventadetalleApi } from '../shared/services/lbsdk';
 
 @NgModule({
   declarations: [
@@ -33,8 +38,10 @@ import { IonicStorageModule } from '@ionic/storage';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),    
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    CacheModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -48,12 +55,16 @@ import { IonicStorageModule } from '@ionic/storage';
     StatusBar,
     SplashScreen,
     Device,
+    Network,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
+    CacheServicio,
+    PedidoventaApi,
+    PedidoventadetalleApi,
+    PedidoVentaService,
+    PedidoVentaDetalleService,
     ArticuloService,
     ClienteService,
     DomicilioService,
-    PedidoVentaService,
-    PedidoVentaDetalleService,
     RubroService
   ]
 })

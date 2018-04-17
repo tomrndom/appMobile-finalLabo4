@@ -8,12 +8,32 @@ import 'rxjs/add/operator/toPromise';
 import { BASE_URL, API_VERSION } from './lb.base.url'
 import { LoopBackConfig, LoopBackFilter, Cliente, ClienteApi } from './lbsdk/index'
 
+import { CacheService } from "ionic-cache";    
+
 @Injectable()
 export class ClienteService {
 
     public clienteActual: Cliente;
 
-    constructor(private clienteService: ClienteApi) {
+    public listaClientes: Array<Cliente>;
+
+    constructor(private clienteService: ClienteApi, private cache: CacheService) {
+        this.cargarClientes();
+    }
+
+    loadList() {        
+        let cacheKey = 'clientes';
+        let request = this.getAll();
+
+        return this.cache.loadFromObservable(cacheKey, request);
+    }
+
+    cargarClientes(){
+        this.loadList();
+        this.cache.getItem('clientes').then(cli => {
+            console.log("clientes?", cli);
+            this.listaClientes = cli;
+        })
     }
 
     getAll(filtro: any = {}): Observable<Cliente[]> {

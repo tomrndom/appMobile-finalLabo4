@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 // Modelos
 import { Pedidoventa } from '../../shared/services/lbsdk/index'
-import { PedidoVentaService } from '../../shared/services';
+import { PedidoVentaService, ClienteService } from '../../shared/services';
 
 @Component({
   selector: 'page-pedidos',
@@ -13,7 +13,11 @@ export class PedidosPage {
 
   public pedidosGuardados: boolean;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams    
+  ) {
+    
   }
 
   ionViewDidLoad() {

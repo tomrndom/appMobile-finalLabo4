@@ -13,6 +13,8 @@ export class DomicilioService {
 
     public domicilioActual: Domicilio;
 
+    public listaDomicilios: Array<Domicilio>;
+
     constructor(private domicilioService: DomicilioApi) {
     }
 

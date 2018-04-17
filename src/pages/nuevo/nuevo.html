@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>nuevo</ion-title>
+    <ion-title>Nuevo Pedido</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,20 +15,71 @@
 
 <ion-content padding>
 
-  Cargar un nuevo pedido
+  <ion-label>Ingrese los datos </ion-label>
 
-  Cliente:
+  <ion-list>
+    <ion-item>
+      <ion-label>Cliente</ion-label>
+      <ion-select [(ngModel)]="clienteElegido" (ngModelChange)="cambiaCliente($event)">>
+        <ion-option *ngFor="let cli of listaClientes" [value]="cli.idCliente">{{cli.razonsocial}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
 
-  Domicilio:
+  <ion-list>
+    <ion-item>
+      <ion-label>Domicilio</ion-label>
+      <ion-select [(ngModel)]="domicilioElegido">
+        <ion-option *ngFor="let dom of listaDomicilios" [value]="dom.idDomicilio">{{dom.calle}}&nbsp;{{dom.numero}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
 
-  Agregar articulos
-  Cantidad
-  Subtotal
+  <div *ngIf="domicilioElegido != null">
+    <ion-list>
+      <ion-item>
+        <ion-label>Rubro</ion-label>
+        <ion-select [(ngModel)]="rubroElegido">
+          <ion-option *ngFor="let rub of listaRubros" [value]="rub.idRubro">{{rub.denominacion}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
 
-  Total
+    <ion-list>
+      <ion-item>
+        <ion-label>Articulo</ion-label>
+        <ion-select [(ngModel)]="articuloElegido">
+          <ion-option *ngFor="let art of listaArticulos" [value]="art">{{art.denominacion}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
 
-  Editar 
-  
-  Confirmar
+    <ion-label *ngIf="articuloElegido != null">Precio: {{articuloElegido.precioventa}}</ion-label>
+
+    <ion-item>
+      <ion-label color="primary" fixed>Cantidad</ion-label>
+      <ion-input type="number" [(ngModel)]="cantidad"></ion-input>
+    </ion-item>
+
+    <button ion-button (click)="agregarAlPedido()">Agregar al pedido</button>
+  </div>
+
+  <button ion-button (click)="forceReload($event)">Recargar datos</button>
+
+
+  <!--
+  <ion-refresher (ionRefresh)="forceReload($event)">
+      <ion-refresher-content refreshingText="Recargando desde la API...">
+      </ion-refresher-content>
+    </ion-refresher>
+   
+    <button ion-button full (click)="cargarClientes()">Load Films</button>
+    <button ion-button full color="danger" (click)="invalidateCache()">Invalidate Cache</button>
+       
+    <ion-list>
+      <ion-item *ngFor="let film of films | async">
+        {{ film.razonsocial }}
+      </ion-item>
+    </ion-list> -->
 
 </ion-content>
